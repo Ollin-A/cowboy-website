@@ -19,6 +19,19 @@ export default async function handleRequest(
       checkoutDomain: context.env.PUBLIC_CHECKOUT_DOMAIN,
       storeDomain: context.env.PUBLIC_STORE_DOMAIN,
     },
+    imgSrc: [
+      "'self'",
+      'cdn.shopify.com',
+      'picsum.photos',
+      'fastly.picsum.photos',
+      'images.unsplash.com',
+    ],
+    connectSrc: [
+      "'self'",
+      'picsum.photos',
+      'fastly.picsum.photos',
+      'images.unsplash.com',
+    ],
   });
 
   const body = await renderToReadableStream(
