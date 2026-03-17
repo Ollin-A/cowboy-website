@@ -1,0 +1,17 @@
+node_modules/
+.env
+.env.local
+build/
+dist/
+.vite/
+.cache/
+.shopify/
+*.log
+.DS_Store
+Thumbs.db
+.cursor/
+#Claude
+CLAUDE.md
+CHANGELOG.md
+#Scripts
+scripts/

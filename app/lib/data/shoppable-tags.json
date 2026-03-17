@@ -1,0 +1,28 @@
+{
+  "collection-new": {
+    "heroImage": "/images/collections/new-hero.jpg",
+    "tags": [
+      {
+        "productHandle": "example-jacket",
+        "label": "Western Denim Jacket",
+        "price": "$285",
+        "x": 45,
+        "y": 22
+      },
+      {
+        "productHandle": "example-belt",
+        "label": "Ranch Belt",
+        "price": "$95",
+        "x": 50,
+        "y": 58
+      },
+      {
+        "productHandle": "example-jeans",
+        "label": "Frontier Slim Jean",
+        "price": "$195",
+        "x": 48,
+        "y": 75
+      }
+    ]
+  }
+}
