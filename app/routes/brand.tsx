@@ -1,6 +1,7 @@
 import type {Route} from './+types/brand';
 import {useRef, useEffect} from 'react';
 import {buildPageMeta, getOriginFromMatches} from '~/lib/utils/seo';
+import SectionDivider from '~/components/ui/SectionDivider';
 
 export const meta: Route.MetaFunction = ({matches}) => {
   const origin = getOriginFromMatches(matches);
@@ -102,7 +103,7 @@ export default function BrandPage() {
       <section className="relative w-full h-[60vh] md:h-[75vh] overflow-hidden">
         <div className="absolute inset-0 bg-primary/20" />
         <img
-          src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1920&q=80&fit=crop"
           alt="Western landscape at golden hour"
           className="w-full h-full object-cover"
         />
@@ -117,15 +118,16 @@ export default function BrandPage() {
       {/* Alternating content sections */}
       <div className="container-content py-16 md:py-24">
         {SECTIONS.map((section, index) => (
-          <section
-            key={section.heading}
-            data-reveal
-            className={`flex flex-col gap-8 md:gap-16 mb-20 md:mb-32 last:mb-0 ${
-              index % 2 === 0
-                ? 'md:flex-row'
-                : 'md:flex-row-reverse'
-            }`}
-          >
+          <div key={section.heading}>
+            {index > 0 && <SectionDivider variant="line" />}
+            <section
+              data-reveal
+              className={`flex flex-col gap-8 md:gap-16 mb-20 md:mb-32 last:mb-0 ${
+                index % 2 === 0
+                  ? 'md:flex-row'
+                  : 'md:flex-row-reverse'
+              }`}
+            >
             {/* Text block */}
             <div
               data-reveal-child
@@ -172,6 +174,7 @@ export default function BrandPage() {
               </div>
             )}
           </section>
+          </div>
         ))}
       </div>
     </div>

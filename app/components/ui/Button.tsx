@@ -46,7 +46,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
       disabled={isDisabled}
       className={[
         'inline-flex items-center justify-center font-body font-medium tracking-widest uppercase',
-        'transition-all duration-fast',
+        'transition-all duration-fast active:scale-[0.98]',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
         variantClasses[variant],
         sizeClasses[size],

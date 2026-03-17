@@ -161,8 +161,13 @@ function HighlightCard({product}: {product: HighlightProduct}) {
             ref={imgRef}
             src={
               product.featuredImage?.url ||
-              '/images/product-placeholder.jpg'
+              `https://picsum.photos/seed/${product.handle}/600/800`
             }
+            onError={(e) => {
+              const target = e.currentTarget;
+              target.onerror = null;
+              target.src = `https://picsum.photos/seed/${product.handle}/600/800`;
+            }}
             alt={
               product.featuredImage?.altText || `${product.title} - Featured`
             }

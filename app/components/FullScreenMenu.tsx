@@ -379,17 +379,20 @@ const NavMenuItem = forwardRef<HTMLElement, NavMenuItemProps>(function NavMenuIt
             type="button"
             ref={ref as Ref<HTMLButtonElement>}
             onClick={onToggle}
-            className="flex items-center gap-3 w-full bg-transparent border-none p-0 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="group flex items-center gap-3 w-full bg-transparent border-none p-0 cursor-pointer text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             aria-expanded={isActive}
             aria-controls={`submenu-${item.label}`}
           >
-            <span
-              className={[
-                'font-heading text-2xl md:text-3xl tracking-tight transition-colors duration-200',
-                isActive ? 'text-primary' : 'text-primary/80 hover:text-primary',
-              ].join(' ')}
-            >
-              {item.label}
+            <span className="flex flex-col">
+              <span
+                className={[
+                  'font-heading text-2xl md:text-3xl tracking-tight transition-colors duration-200',
+                  isActive ? 'text-primary' : 'text-primary/80 hover:text-primary',
+                ].join(' ')}
+              >
+                {item.label}
+              </span>
+              <span className="block h-[2px] w-6 bg-primary mt-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
             </span>
             <span
               className="text-primary/50 transition-transform duration-300 text-lg leading-none"
@@ -407,9 +410,10 @@ const NavMenuItem = forwardRef<HTMLElement, NavMenuItemProps>(function NavMenuIt
             ref={ref as Ref<HTMLAnchorElement>}
             prefetch="intent"
             onClick={onNavigate}
-            className="font-heading text-2xl md:text-3xl tracking-tight text-primary/80 no-underline hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            className="group inline-flex flex-col font-heading text-2xl md:text-3xl tracking-tight text-primary/80 no-underline hover:text-primary transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
             {item.label}
+            <span className="block h-[2px] w-6 bg-primary mt-1 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </NavLink>
         )}
       </div>

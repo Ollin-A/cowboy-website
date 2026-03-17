@@ -1,6 +1,6 @@
 {
   "collection-new": {
-    "heroImage": "/images/collections/new-hero.jpg",
+    "heroImage": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1440&q=85&fit=crop",
     "tags": [
       {
         "productHandle": "example-jacket",

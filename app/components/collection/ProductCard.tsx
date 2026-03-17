@@ -18,7 +18,7 @@ export default function ProductCard({product, loading}: ProductCardProps) {
       prefetch="intent"
       to={variantUrl}
     >
-      <div className="relative overflow-hidden" style={{aspectRatio: '3 / 4'}}>
+      <div className="relative overflow-hidden bg-[#f5f0eb]" style={{aspectRatio: '3 / 4'}}>
         {image && (
           <Image
             alt={image.altText || `${product.title} - Product Image`}
@@ -30,6 +30,7 @@ export default function ProductCard({product, loading}: ProductCardProps) {
             height={image.height ?? 800}
           />
         )}
+        <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.04] transition-opacity duration-base pointer-events-none" />
       </div>
 
       <div className="mt-3">

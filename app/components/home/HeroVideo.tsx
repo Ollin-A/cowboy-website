@@ -12,9 +12,9 @@ interface HeroVideoProps {
 }
 
 export default function HeroVideo({
-  videoSrc = '/videos/hero-placeholder.mp4',
-  webmSrc = '/videos/hero-placeholder.webm',
-  posterSrc = '/images/hero-poster.jpg',
+  videoSrc = '',
+  webmSrc = '',
+  posterSrc = 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80&fit=crop',
   headline = 'New Collection',
   subline = 'Crafted for the modern West',
   ctaText = 'Shop Now',
@@ -24,12 +24,17 @@ export default function HeroVideo({
   const contentRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldAutoplay, setShouldAutoplay] = useState(true);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
+  const hasVideo = Boolean(videoSrc);
 
   // Pause video if user prefers reduced motion
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)',
     ).matches;
+    setReducedMotion(prefersReducedMotion);
     if (prefersReducedMotion) {
       setShouldAutoplay(false);
       videoRef.current?.pause();
@@ -76,21 +81,39 @@ export default function HeroVideo({
       className="relative w-full h-screen min-h-[600px] overflow-hidden flex items-center justify-center"
       aria-label="Hero"
     >
-      {/* Video background */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        autoPlay={shouldAutoplay}
-        loop
-        muted
-        playsInline
-        poster={posterSrc}
-        preload="metadata"
-        aria-hidden="true"
-      >
-        <source src={webmSrc} type="video/webm" />
-        <source src={videoSrc} type="video/mp4" />
-      </video>
+      {/* Video or Ken Burns poster background */}
+      {hasVideo ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay={shouldAutoplay}
+          loop
+          muted
+          playsInline
+          poster={posterSrc}
+          preload="metadata"
+          aria-hidden="true"
+          onPlay={() => setVideoPlaying(true)}
+          onPause={() => setVideoPlaying(false)}
+        >
+          {webmSrc && <source src={webmSrc} type="video/webm" />}
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+      ) : (
+        <img
+          src={posterSrc}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={
+            !reducedMotion
+              ? {
+                  animation: 'ken-burns 12s linear infinite alternate',
+                }
+              : undefined
+          }
+        />
+      )}
 
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/30" aria-hidden="true" />

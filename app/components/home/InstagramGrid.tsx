@@ -10,15 +10,15 @@ interface InstagramItem {
 }
 
 const PLACEHOLDER_ITEMS: InstagramItem[] = [
-  {type: 'image', src: '/images/ig-1.jpg', alt: 'Western lifestyle photo 1', href: '#'},
-  {type: 'video', src: '/videos/ig-2.mp4', webmSrc: '/videos/ig-2.webm', alt: 'Western lifestyle video 1', href: '#'},
-  {type: 'image', src: '/images/ig-3.jpg', alt: 'Western lifestyle photo 2', href: '#'},
-  {type: 'image', src: '/images/ig-4.jpg', alt: 'Western lifestyle photo 3', href: '#'},
-  {type: 'image', src: '/images/ig-5.jpg', alt: 'Western lifestyle photo 4', href: '#'},
-  {type: 'video', src: '/videos/ig-6.mp4', webmSrc: '/videos/ig-6.webm', alt: 'Western lifestyle video 2', href: '#'},
-  {type: 'image', src: '/images/ig-7.jpg', alt: 'Western lifestyle photo 5', href: '#'},
-  {type: 'image', src: '/images/ig-8.jpg', alt: 'Western lifestyle photo 6', href: '#'},
-  {type: 'image', src: '/images/ig-9.jpg', alt: 'Western lifestyle photo 7', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&q=80&fit=crop&crop=center', alt: 'Leather goods flat lay', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=600&q=80&fit=crop&crop=center', alt: 'Western boots close-up', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&q=80&fit=crop&crop=center', alt: 'Leather texture macro', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80&fit=crop&crop=center', alt: 'Desert sunset landscape', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?w=600&q=80&fit=crop&crop=center', alt: 'Western crafting tools', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1434389677669-e08b4cda3a7a?w=600&q=80&fit=crop&crop=center', alt: 'Person walking through prairie grass', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&q=80&fit=crop&crop=center', alt: 'Denim detail close-up', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=600&q=80&fit=crop&crop=center', alt: 'Horses in morning fog', href: '#'},
+  {type: 'image', src: 'https://images.unsplash.com/photo-1508349937151-22b68b72d5b6?w=600&q=80&fit=crop&crop=center', alt: 'Golden wheat field at sunset', href: '#'},
 ];
 
 interface InstagramGridProps {

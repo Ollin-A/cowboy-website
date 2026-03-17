@@ -294,6 +294,15 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
+/* Broken image fallback — shows a styled placeholder instead of browser default */
+img[src]::before {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: #f5f0eb;
+}
+
 /* Hide scrollbar but keep scroll functionality */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

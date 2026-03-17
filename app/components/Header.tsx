@@ -1,4 +1,4 @@
-import {Suspense, useState, useCallback} from 'react';
+import {Suspense, useState, useCallback, useEffect, useRef} from 'react';
 import {Await, NavLink, useAsyncValue} from 'react-router';
 import {useOptimisticCart} from '@shopify/hydrogen';
 import type {CartApiQueryFragment} from 'storefrontapi.generated';
@@ -86,6 +86,19 @@ function CartButton({count, onClick}: {count: number; onClick: () => void}) {
       ? 'Shopping bag, empty'
       : `Shopping bag, ${count} item${count !== 1 ? 's' : ''}`;
 
+  const badgeRef = useRef<HTMLSpanElement>(null);
+  const prevCount = useRef(count);
+
+  useEffect(() => {
+    if (count !== prevCount.current && count > 0 && badgeRef.current) {
+      badgeRef.current.classList.remove('badge-pulse');
+      // Force reflow to restart animation
+      void badgeRef.current.offsetWidth;
+      badgeRef.current.classList.add('badge-pulse');
+    }
+    prevCount.current = count;
+  }, [count]);
+
   return (
     <button
       type="button"
@@ -96,6 +109,7 @@ function CartButton({count, onClick}: {count: number; onClick: () => void}) {
       <CartIcon />
       {count > 0 && (
         <span
+          ref={badgeRef}
           className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] rounded-full bg-primary text-bg text-xs font-body font-medium leading-none px-1"
           aria-hidden="true"
         >

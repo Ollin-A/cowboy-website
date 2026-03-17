@@ -15,7 +15,7 @@ interface PortalData {
 const PORTALS: PortalData[] = [
   {
     title: "Men's Apparel",
-    image: '/images/portal-mens-placeholder.jpg',
+    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80&fit=crop',
     subcategories: [
       {label: 'New Temporada', href: '/collections/mens/new'},
       {label: 'Jeans', href: '/collections/mens/jeans'},
@@ -26,7 +26,7 @@ const PORTALS: PortalData[] = [
   },
   {
     title: "Women's Apparel",
-    image: '/images/portal-womens-placeholder.jpg',
+    image: 'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=800&q=80&fit=crop',
     subcategories: [
       {label: 'New Temporada', href: '/collections/womens/new'},
       {label: 'Jeans', href: '/collections/womens/jeans'},

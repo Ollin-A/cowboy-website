@@ -7,6 +7,7 @@ import CategoryPortals from '~/components/home/CategoryPortals';
 import HighlightsCarousel from '~/components/home/HighlightsCarousel';
 import InstagramGrid from '~/components/home/InstagramGrid';
 import Skeleton from '~/components/ui/Skeleton';
+import SectionDivider from '~/components/ui/SectionDivider';
 import {
   buildPageMeta,
   organizationJsonLd,
@@ -81,22 +82,49 @@ export default function Homepage() {
             const targets =
               children.length > 0 ? children : [section];
 
-            gsap.fromTo(
-              targets,
-              {opacity: 0, y: 40},
-              {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                stagger: 0.1,
-                ease: 'power2.out',
-                scrollTrigger: {
-                  trigger: section,
-                  start: 'top 85%',
-                  once: true,
+            // Directional x-offset for CategoryPortals children
+            const isPortals = section.hasAttribute('data-reveal-portals');
+            if (isPortals && children.length >= 2) {
+              // Left portal slides from left, right portal from right
+              Array.from(children).forEach((child, idx) => {
+                gsap.fromTo(
+                  child,
+                  {opacity: 0, y: 40, scale: 0.98, x: idx === 0 ? -20 : 20},
+                  {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    x: 0,
+                    duration: 0.8,
+                    delay: idx * 0.12,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                      trigger: section,
+                      start: 'top 85%',
+                      once: true,
+                    },
+                  },
+                );
+              });
+            } else {
+              gsap.fromTo(
+                targets,
+                {opacity: 0, y: 40, scale: 0.98},
+                {
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                  duration: 0.8,
+                  stagger: 0.12,
+                  ease: 'power2.out',
+                  scrollTrigger: {
+                    trigger: section,
+                    start: 'top 85%',
+                    once: true,
+                  },
                 },
-              },
-            );
+              );
+            }
           });
         }, main);
       },
@@ -112,10 +140,14 @@ export default function Homepage() {
       {/* 1. Hero Video — full viewport */}
       <HeroVideo />
 
+      <SectionDivider variant="diamond" />
+
       {/* 2. Category Portals — Men's / Women's */}
-      <div data-reveal>
+      <div data-reveal data-reveal-portals>
         <CategoryPortals />
       </div>
+
+      <SectionDivider variant="line" />
 
       {/* 3. Highlights Carousel — featured products */}
       <div data-reveal>
@@ -134,10 +166,14 @@ export default function Homepage() {
         </Suspense>
       </div>
 
+      <SectionDivider variant="diamond" />
+
       {/* 4. Instagram Grid */}
       <div data-reveal>
         <InstagramGrid />
       </div>
+
+      <SectionDivider variant="line" />
     </div>
   );
 }
